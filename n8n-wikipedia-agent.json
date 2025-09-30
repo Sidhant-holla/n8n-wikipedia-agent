@@ -1,0 +1,109 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        0,
+        400
+      ],
+      "id": "4c6b2e46-ac6c-4736-ba01-c484854aa7d8",
+      "name": "When chat message received",
+      "webhookId": "ee02fdde-7b01-4964-b5ea-2ea08e1c71b3"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        192,
+        384
+      ],
+      "id": "cba9099d-871a-4f84-b200-1ca7bfbea00b",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        16,
+        704
+      ],
+      "id": "52680403-0d78-4afa-b2eb-0d11359bc949",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "WtBJrra5G3Dhi4ha",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.toolWikipedia",
+      "typeVersion": 1,
+      "position": [
+        352,
+        592
+      ],
+      "id": "96059be8-464b-47f9-94d4-4a6e990927e0",
+      "name": "Wikipedia"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wikipedia": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "720507a2-6daa-43ae-9762-de2b5abceb91",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "ec1f2a0cb076d070036ac53d9be2af990699cfa2fe4462b3ee83fe0e79773716"
+  },
+  "id": "yya5xu1kDmtjAaAs",
+  "tags": []
+}
